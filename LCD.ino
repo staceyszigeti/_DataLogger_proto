@@ -64,14 +64,20 @@ static void LCD()
       lcd.setCursor(0, 0);
       break;
     case 5:
+      count_refresh++;
+      if ( count_refresh > 5) {
+        lcd.clear();
+        count_refresh=0;
+      };
       lcd.setCursor(0, 0);
-      lcd.print("Accelerometer, g");
+      lcd.print("Yaw Pitch Roll [deg]"); 
       lcd.setCursor(0, 1);
-      lcd.print(fAccX,2); lcd.print(" "); lcd.print(fAccY,2); lcd.print(" "); lcd.print(fAccZ,2);
+      lcd.print(ypr[0] * 180/M_PI,1); lcd.print(" "); lcd.print(ypr[1] * 180/M_PI,1); lcd.print(" "); lcd.print(ypr[2] * 180/M_PI,1);
       lcd.setCursor(0, 2);
-      lcd.print("Gyroscope, deg/s");
+      lcd.print("FIFO status: ");
       lcd.setCursor(0, 3);
-      lcd.print(fGyX,2); lcd.print(" "); lcd.print(fGyY,2); lcd.print(" "); lcd.print(fGyZ,2);
+      lcd.print(mpu_FIFO_status); lcd.setCursor(10, 3); lcd.print(mpu_FIFO_count);
+      //lcd.print(aaReal.x,1); lcd.print(" "); lcd.print(aaReal.y,1); lcd.print(" "); lcd.print(aaReal.z,1);
       break;
     case 6:
       lcd.setCursor(0, 0);

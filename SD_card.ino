@@ -4,7 +4,7 @@ void SD_card() {
   digitalWrite(4, LOW);
   
   if (SdCardLog) {
-  String dataString = gpsDATE + ";" + gpsTIME + ";" + String(gpsLAT,5) + ";" + String(gpsLNG,5) + ";" + String(gpsSOG,2) + ";" + String(gpsCOURSE,2) + ";" + String(gpsLNG,5) + ";" + String(gpsSOG,2) + ";" + String(gpsCOURSE,2);
+  String dataString = gpsDATE + ";" + gpsTIME + ";" + String(gpsLAT,5) + ";" + String(gpsLNG,5) + ";" + String(gpsSOG,2) + ";" + String(gpsCOURSE,2) + ";" + String(gpsLNG,5) + ";" + String(gpsSOG,2) + ";" + String(gpsCOURSE,2) + sensorString;
   File dataFile = SD.open(FileName.c_str(), FILE_WRITE);
   
   // if the file is available, write to it:
